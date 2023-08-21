@@ -1,11 +1,14 @@
 const MAXPAGES = 10;
+const MESSAGE = "Muito prazer!\nMe chamo Jonathan, sou um desenvolvedor FullStack com 3 anos de experiência e tenho maior familiaridade com PHP e VUE.js.\nAtualmente estou procurando novas oportunidades para alavancar minha carreira, caso tenha alguma, ficaria muito grato se compartilhasse comigo!\nMuito obrigado!";
 
 async function AddConnections() {
 	return new Promise(async resolve => {
 		let results = await getResults();
 
 		if (results.length == 0) {
-			return resolve();
+			setTimeout(()=>{
+				return resolve();
+			}, 500);
 		}
 
 		for (const person of results) {
@@ -54,7 +57,7 @@ async function sendMessage(button) {
 		button.click();
 		setTimeout(() => {
 			let el = document.querySelector("textarea[name='message']")
-			el.value = " ";
+			el.value = MESSAGE;
 			let evt = document.createEvent("Events");
 			evt.initEvent("change", true, true);
 			el.dispatchEvent(evt);
